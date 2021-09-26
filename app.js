@@ -5,9 +5,10 @@ const multer  = require('multer');
 const path = require("path")
 const methodOverride = require("method-override")
 const fs = require("fs")
+require('dotenv').config()
 const port = process.env.PORT || 3000
 
-mongoose.connect('mongodb://localhost:27017/images');
+mongoose.connect(process.env.DATABASE);
 
 const imgSchema = new mongoose.Schema({
     imgUrl : String
