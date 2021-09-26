@@ -30,6 +30,9 @@ app.get("/", (req, res) => {
     .then(images => {
       res.render("index", {images})
     })
+    .catch(err => {
+      console.log(err)
+    })
 })
 
 // storage
