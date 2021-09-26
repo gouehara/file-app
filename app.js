@@ -25,14 +25,14 @@ app.get('/upload', (req, res) => {
   res.render('upload')
 })
 
-app.get("/", (req, res) => {
-  Picture.find({})
-    .then(images => {
-      res.render("index", {images})
+app.get("/", async (req, res) => {
+  try {
+    await Picture.find({}, (err, data) => {
+      res.render("index", {images: data})
     })
-    .catch(err => {
-      console.log(err)
-    })
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 // storage
