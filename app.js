@@ -21,11 +21,11 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(methodOverride('_method'))
 
-app.get('/upload', (req, res) => {
+app.get('/', (req, res) => {
   res.render('upload')
 })
 
-app.get("/", async (req, res) => {
+app.get("/upload", async (req, res) => {
   try {
     const images = await Picture.find({});
     res.render("index", {images})
