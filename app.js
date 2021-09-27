@@ -27,11 +27,10 @@ app.get('/upload', (req, res) => {
 
 app.get("/", async (req, res) => {
   try {
-    await Picture.find({}, (err, data) => {
-      res.render("index", {images: data})
-    })
+    const images = await Picture.find({});
+    res.render("index", {images})
   } catch (error) {
-    console.log(error)
+    res.redirect("/")
   }
 })
 
